@@ -4,7 +4,8 @@
 <font size="4"> Command: git clone gitrepo_url </font>
 
 ## Step 2: Install required packages from requirements.txt
-<font size="4"> pip install -r requirements.txt </font>
+<font size="4"> 1. pip install -r requirements.txt </font><br/>
+<font size="4"> 2. Update OPENAI_API_KEY and OPENAI_API_ENDPOINT in app.py</font><br/>
 
 ## Step 3: Run app.py
 <font size="4">1. Open the terminal and run below command python app.py </font><br/>
