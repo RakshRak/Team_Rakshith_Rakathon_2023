@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Product Listing</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>  
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+.custom_button{
+        width: 135px;
+        height: 135px;
+        justify-content: center; 
+        align-items: center;
+        background-color: whitesmoke;
+    }
+    
+    label{
+    padding: 30px;
+    font-size: 50px;
+    }
+    .tablet-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #bf0101;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Add a hover effect */
+        .tablet-button:hover {
+            background-color: #636565;
+        }
+        .center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.ring
+{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:150px;
+  height:150px;
+  background:transparent;
+  border:3px solid #3c3c3c;
+  border-radius:50%;
+  text-align:center;
+  line-height:150px;
+  font-family:sans-serif;
+  font-size:20px;
+  color:#8d031f;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  text-shadow:0 0 10px #8d031f;
+  box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+.ring:before
+{
+  content:'';
+  position:absolute;
+  top:-3px;
+  left:-3px;
+  width:100%;
+  height:100%;
+  border:3px solid transparent;
+  border-top:3px solid #8d031f;
+  border-right:3px solid #8d031f;
+  border-radius:50%;
+  animation:animateC 2s linear infinite;
+}
+span
+{
+  display:block;
+  position:absolute;
+  top:calc(50% - 2px);
+  left:50%;
+  width:50%;
+  height:4px;
+  background:transparent;
+  transform-origin:left;
+  animation:animate 2s linear infinite;
+}
+span:before
+{
+  content:'';
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#8d031f;
+  top:-6px;
+  right:-8px;
+  box-shadow:0 0 20px #8d031f;
+}
+@keyframes animateC
+{
+  0%
+  {
+    transform:rotate(0deg);
+  }
+  100%
+  {
+    transform:rotate(360deg);
+  }
+}
+@keyframes animate
+{
+  0%
+  {
+    transform:rotate(45deg);
+  }
+  100%
+  {
+    transform:rotate(405deg);
+  }
+}
+
+.popout {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+}
+.popout .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  font-size: 32px;
+  z-index: 999;
+  background: #eee;
+  color: #00a3dd;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  transition: 0.2s opacity ease-in-out;
+}
+.popout .btn.active {
+  visibility: hidden;
+  opacity: 0;
+}
+.popout .btn:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  content: "";
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: white;
+  z-index: -2;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.popout .btn:active:after {
+  -webkit-transform: scale(1.3);
+  -moz-transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  transform: scale(1.3);
+  opacity: 0;
+}
+.popout .panel {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 440px;
+  text-align: left;
+  overflow: hidden;
+  visibility: hidden;
+  transform: scale(0);
+  transform-origin: 100% 100%;
+  transition: all 0.2s;
+  opacity: 0;
+}
+.popout .panel.active {
+  height: auto;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: transform 0.2s, visibility 0s 0s, opacity 0.2s;
+}
+.popout .panel-header {
+  padding: 2rem;
+  font-size: 1.5rem;
+  background-color: #F4E0E0;
+  font-weight: 300;
+  color: black;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.popout .panel-body {
+  padding: 1.5rem 2rem;
+  background-color: white;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;background-color: #87011c;color: whitesmoke;margin:0 ;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 ><img alt="Brand" src="../static/images/logo1.png" style="height: 80px; padding-top: 20px;"></h3>
+  </div>
+  <div style="font-size: 30px; font-family:'Times New Roman', Times, serif;margin-top: 20px;padding-left: 30px; ">
+    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
+    <a href="/about" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
+    
+  </div>
+</nav>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text" style="color: #bf0101;"><b>Product Listing</b></h1>
+    <hr style="width:300px;border:5px solid black" class="w3-round">
+    
+  </div>
+  <div class="ring" id="hid" hidden>Loading
+    <span></span>
+  </div>
+  <div class="w3-container" style="padding: 50px 150px;" id="main">
+    <form action="/details" method="post" enctype="multipart/form-data">
+        <div class="row ">
+        <div class="col-3 m-4 custom_button">
+            <label for="files1" id="l1"><i class="fa fa-plus"></i></label>
+            <input type="file" name="uimage" id="files1" style="visibility:hidden;" onchange="previewFile('l1')">   
+        </div>
+        <div class="col-3 custom_button m-4">
+            <label for="files2" id="l2"><i class="fa fa-plus "></i></label>
+            <input type="file" name="uimage" id="files2" style="visibility:hidden;" onchange="previewFile('l2')">    
+        </div>
+        <div class="col-3 custom_button m-4">
+            <label for="files3" id="l3"><i class="fa fa-plus "></i></label>
+            <input type="file" name="uimage" id="files3" style="visibility:hidden;" onchange="previewFile('l3')">    
+        </div>
+        <div class="col-3 custom_button m-4">
+            <label for="files4" id="l4"><i class="fa fa-plus "></i></label>
+            <input type="file" name="uimage" id="files4" style="visibility:hidden;" onchange="previewFile('l4')">    
+        </div>
+       
+        </div>
+        <div class="row">
+        <div class="col-3 custom_button m-4">
+            <label for="files5" id="l5"><i class="fa fa-plus "></i></i></label>
+            <input type="file" name="uimage" id="files5" style="visibility:hidden;" onchange="previewFile('l5')">    
+        </div>
+        <div class="col-3 custom_button m-4">
+            <label for="files6" id="l6"><i class="fa fa-plus "></i></i></label>
+            <input type="file" name="uimage" id="files6" style="visibility:hidden;" onchange="previewFile('l6')">    
+        </div>
+        <div class="col-3 custom_button m-4">
+            <label for="files7" id="l7"><i class="fa fa-plus "></i></i></label>
+            <input type="file" name="uimage" id="files7" style="visibility:hidden;" onchange="previewFile('l7')">    
+        </div>
+        <div class="col-3 custom_button m-4">
+            <label for="files8" id="l8"><i class="fa fa-plus "></i></label>
+            <input type="file" name="uimage" id="files8" style="visibility:hidden;" onchange="previewFile('l8')">    
+        </div>      
+    </div>
+    <div class="row">
+        <div class="col-2 m-1"></div>
+        <button class="col-6 tablet-button" onclick="loading()" >Upload the images</button>    
+    </div>
+</form>
+  </div>
+</div>
+<div class="popout">
+  <div class="btn">
+    <i class="fa fa-robot fa-bounce"></i>
+  </div>
+  <div class="panel" style="margin-bottom: 75px; height: 400px;">
+    <div class="panel-header" >
+      Coming soon....</div>
+    
+  </div>
+</div>
+
+
+</body>
+<script>
+  function previewFile(id) {
+  var preview = document.getElementById(id);
+  var file    = document.querySelector('input[type=file]').files[0];
+  
+  if (file) {
+    preview.innerHTML='<i class="fa-solid fa-check" style="color: #26ba30;"></i>';
+  } else {
+    preview.innerHTML= '<i class="fa-solid fa-check" "></i>';
+  }
+  
+}
+function loading(){
+  var preview = document.getElementById('hid');
+  var m = document.getElementById('main');
+  
+  preview.removeAttribute("hidden"); 
+  m.hidden = true 
+}
+
+$(".popout .btn").click(function () {
+  $(this).toggleClass("active");
+  $(this).closest(".popout").find(".panel").toggleClass("active");
+});
+$(document).click(function () {
+  $(".popout .panel").removeClass("active");
+  $(".popout .btn").removeClass("active");
+});
+$(".popout .panel").click(function (event) {
+  event.stopPropagation();
+});
+$(".popout .btn").click(function (event) {
+  event.stopPropagation();
+});
+
+</script>
+</html>

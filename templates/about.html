@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>About</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  
+  padding: 5px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 30px;
+  text-align: center;
+}
+.img{
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;background-color: #87011c;color: whitesmoke;margin:0 ;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 ><img alt="Brand" src="../static/images/logo1.png" style="height: 80px; padding-top: 20px;"></h3>
+  </div>
+  <div style="font-size: 30px; font-family:'Times New Roman', Times, serif;margin-top: 20px;padding-left: 30px; ">
+    <a href="/" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
+    <a href="/about" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">About</a> 
+    
+  </div>
+</nav>
+
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <div class="w3-container" id="designers" style="margin-top:75px">
+    <h3 class="w3-xxxlarge w3-text" style="color: #bf0101;"><b>The Team</b></h3>
+    <hr style="width:150px;border:5px solid black" class="w3-round">
+    
+  </div>
+  
+  <div class="grid-container">
+    <div class="grid-item"><img class="img" src="../static/images/raksh.png" alt=""></div>
+    <div class="grid-item"><img class="img" src="../static/images/siva.png" alt=""></div>
+    <div class="grid-item"><img class="img" src="../static/images/aditi.png" alt=""></div>  
+    <div class="grid-item"> <img class="img"  src="../static/images/bhagya.png" alt=""></div>
+    <div class="grid-item">Rakshtih L</div>
+    <div class="grid-item">Sivananth</div>  
+    <div class="grid-item">Aditi</div>
+    <div class="grid-item">Bhagyashree</div> 
+    
+  </div>
+  
+</div>
+
+</body>
+</html>
